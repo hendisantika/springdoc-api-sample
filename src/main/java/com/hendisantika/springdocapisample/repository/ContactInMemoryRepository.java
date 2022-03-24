@@ -49,4 +49,18 @@ public class ContactInMemoryRepository implements ContactRepository {
         contacts.add(newContact);
         return newContact;
     }
+
+    @Override
+    public Contact update(Contact newContact) {
+        Contact currentContact = contacts.stream()
+                .filter(contact -> contact.getId().equals(newContact.getId()))
+                .findAny()
+                .orElse(null);
+        currentContact.setFirstName(newContact.getFirstName());
+        currentContact.setLastName(newContact.getLastName());
+        currentContact.setEmail(newContact.getEmail());
+        currentContact.setPhone(newContact.getPhone());
+        currentContact.setAddress(newContact.getAddress());
+        return currentContact;
+    }
 }
