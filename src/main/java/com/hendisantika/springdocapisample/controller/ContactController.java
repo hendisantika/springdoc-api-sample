@@ -37,4 +37,10 @@ public class ContactController {
     public Contact createNewContact(@RequestBody Contact newContact) {
         return contactRepository.save(newContact);
     }
+
+    @PutMapping("/contacts/{id}")
+    public Contact updateContact(@RequestBody Contact newContact, @PathVariable Long id) {
+        newContact.setId(id);
+        return contactRepository.update(newContact);
+    }
 }
