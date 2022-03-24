@@ -34,4 +34,13 @@ public class ContactInMemoryRepository implements ContactRepository {
     public List<Contact> getAll() {
         return contacts;
     }
+
+    @Override
+    public Contact getById(Long id) {
+        Contact result = contacts.stream()
+                .filter(contact -> contact.getId().equals(id))
+                .findAny()
+                .orElse(null);
+        return result;
+    }
 }
