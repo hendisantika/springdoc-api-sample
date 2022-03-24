@@ -43,4 +43,9 @@ public class ContactController {
         newContact.setId(id);
         return contactRepository.update(newContact);
     }
+
+    @DeleteMapping("/contacts/{id}")
+    public void deleteContact(@PathVariable Long id) {
+        contactRepository.delete(id);
+    }
 }
