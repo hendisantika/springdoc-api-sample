@@ -29,4 +29,9 @@ public class ContactInMemoryRepository implements ContactRepository {
         contacts.add(new Contact(4L, "Hatake", "Kakashi", "hatake_kakashi@konohagakure.co.jp", "123-456-786", "address 234, street 4, city 1"));
         contacts.add(new Contact(5L, "Rock", "Lee", "rock_lee@konohagakure.co.jp", "123-456-785", "address 678, street 5, city 1"));
     }
+
+    @Override
+    public List<Contact> getAll() {
+        return contacts;
+    }
 }
