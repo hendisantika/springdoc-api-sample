@@ -63,4 +63,13 @@ public class ContactInMemoryRepository implements ContactRepository {
         currentContact.setAddress(newContact.getAddress());
         return currentContact;
     }
+
+    @Override
+    public void delete(Long id) {
+        Contact currentContact = contacts.stream()
+                .filter(contact -> contact.getId().equals(id))
+                .findAny()
+                .orElse(null);
+        contacts.remove(currentContact);
+    }
 }
