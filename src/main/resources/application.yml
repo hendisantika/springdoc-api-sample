@@ -7,6 +7,6 @@ springdoc:
     disable-swagger-default-url: true
     use-root-path: true
   show-actuator: true
-  group-configs:
-    - group: demo
-      paths-to-match: /**
+#  group-configs:
+#    - group: demo
+#      paths-to-match: /**
