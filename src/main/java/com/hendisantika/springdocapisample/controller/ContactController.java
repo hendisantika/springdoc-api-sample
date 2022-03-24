@@ -4,6 +4,7 @@ import com.hendisantika.springdocapisample.entity.Contact;
 import com.hendisantika.springdocapisample.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,5 +28,10 @@ public class ContactController {
     @GetMapping("/contacts")
     public List<Contact> getAll() {
         return contactRepository.getAll();
+    }
+
+    @GetMapping("/contacts/{id}")
+    public Contact getContactById(@PathVariable Long id) {
+        return contactRepository.getById(id);
     }
 }
