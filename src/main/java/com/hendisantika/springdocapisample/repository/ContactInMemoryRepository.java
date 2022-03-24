@@ -1,7 +1,9 @@
 package com.hendisantika.springdocapisample.repository;
 
 import com.hendisantika.springdocapisample.entity.Contact;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +54,9 @@ public class ContactInMemoryRepository implements ContactRepository {
 
     @Override
     public Contact update(Contact newContact) {
+        if (newContact == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
         Contact currentContact = contacts.stream()
                 .filter(contact -> contact.getId().equals(newContact.getId()))
                 .findAny()
