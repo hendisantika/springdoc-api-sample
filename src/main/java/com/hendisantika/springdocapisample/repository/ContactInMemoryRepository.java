@@ -43,4 +43,10 @@ public class ContactInMemoryRepository implements ContactRepository {
                 .orElse(null);
         return result;
     }
+
+    @Override
+    public Contact save(Contact newContact) {
+        contacts.add(newContact);
+        return newContact;
+    }
 }
