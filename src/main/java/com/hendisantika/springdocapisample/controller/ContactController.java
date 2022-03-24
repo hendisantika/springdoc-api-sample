@@ -3,9 +3,7 @@ package com.hendisantika.springdocapisample.controller;
 import com.hendisantika.springdocapisample.entity.Contact;
 import com.hendisantika.springdocapisample.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,10 @@ public class ContactController {
     @GetMapping("/contacts/{id}")
     public Contact getContactById(@PathVariable Long id) {
         return contactRepository.getById(id);
+    }
+
+    @PostMapping("/contacts")
+    public Contact createNewContact(@RequestBody Contact newContact) {
+        return contactRepository.save(newContact);
     }
 }
