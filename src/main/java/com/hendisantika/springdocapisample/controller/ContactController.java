@@ -52,11 +52,45 @@ public class ContactController {
     }
 
     @GetMapping("/contacts/{id}")
+    @Operation(
+            summary = "List Contact by ID",
+            description = "List Contact by ID.",
+            tags = {"Contact"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Contact.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     public Contact getContactById(@PathVariable Long id) {
         return contactRepository.getById(id);
     }
 
     @PostMapping("/contacts")
+    @Operation(
+            summary = "Add New Contact",
+            description = "Add New Contact.",
+            tags = {"Contact"})
+    @ApiResponses(value = {
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                    description = "Success",
+                    responseCode = "200",
+                    content = @Content(mediaType = "application/json", schema = @Schema(implementation =
+                            Contact.class))
+            ),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Not found", responseCode = "404",
+                    content = @Content),
+            @io.swagger.v3.oas.annotations.responses.ApiResponse(description = "Internal error", responseCode = "500"
+                    , content = @Content)
+    }
+    )
     public Contact createNewContact(@RequestBody Contact newContact) {
         return contactRepository.save(newContact);
     }
